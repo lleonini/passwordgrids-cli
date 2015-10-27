@@ -1,6 +1,8 @@
 # Overview
 
-PasswordGrid is a password generator that helps to generate unique high security
+PasswordGrid is a password generator that helps to generate
+[unique](http://xkcd.com/792/)
+high security
 passwords using grids.
 
 ```
@@ -126,8 +128,8 @@ We propose to use a scheme like:
 ```
 
 The postfix can be static or conditional. It can be used to add a lowercase or
-an uppercase or a number if the PG haven't generated one, and, very important,
-supply a special char.
+an uppercase or a number if the PG haven't generated one, and also,
+supply at least a special char.
 
 A static postfix of 4 characters containing the full mix, like "Ye4!", can be a
 good solution.
@@ -180,6 +182,8 @@ There are two advantages with grids:
 		read your password.
 
 ### Limitations
+
+![](http://imgs.xkcd.com/comics/security.png)
 
 If an attacker gets one of your grid and its corresponding identifier, he could
 have the ability to brute force the master password. Then the only protection

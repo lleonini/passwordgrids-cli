@@ -39,11 +39,10 @@ class GridDisplay(
     val display_lines = for (l <- 0 to grid_lines - 1) yield {
       val line_of_grids: Seq[Seq[String]] =
         (0 to grid_cols - 1) map { c => {
-          val pos = l * grid_lines + c
+          val pos = l * grid_cols + c
           val text = salt + "-" + pos + "-" + identifier
           formatLines(new Grid(text, alphabet, size))
-        }
-        }
+        }}
       line_of_grids.reduceLeft((a, b) => a zip b map (c => c._1 + "    " + c._2))
     }
     display_lines.flatten
