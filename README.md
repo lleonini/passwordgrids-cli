@@ -45,6 +45,10 @@ Z5  LA  8U  ES    H3  YT  FE  US    25  3R  81  FL    1F  J4  0M  Z9
 0G  76  EJ  2A    XW  4F  AH  R6    FD  K2  W1  0Z    2K  UR  0X  95
 ```
 
+This is the command line version. If you want a stand alone client-side
+javascript version, please check:
+[PasswordGrid JS](https://www.github.com/lleonini/passwordgrid-js)
+
 # Getting started
 
 ## Requirements
