@@ -1,4 +1,4 @@
-package net.leonini.passwordgrid
+package net.leonini.passwordgrids
 
 import java.security.MessageDigest
 
@@ -26,7 +26,7 @@ class Grid(val text: String, val alphabet: String, val size: Int) {
   override def toString = toChars map { line => line mkString "" } mkString "\n"
 }
 
-class GridDisplay(
+class GridsDisplay(
   val salt: String,
   val identifier: String,
   val grid_lines: Int = 3,
@@ -66,7 +66,7 @@ class GridDisplay(
   override def toString = {
     var tmp = "\n"
     for (l <- 0 to flatLines.length - 1) {
-      tmp = tmp + flatLines(l) + "\n"
+      tmp = tmp + "  " + flatLines(l) + "\n"
       if ((l + 1) % 2 == 0) tmp = tmp + "\n"
       if ((l + 1) % size == 0) tmp = tmp + "\n"
     }

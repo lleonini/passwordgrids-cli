@@ -1,4 +1,4 @@
-package net.leonini.passwordgrid
+package net.leonini.passwordgrids
 
 import org.scalatest._
 

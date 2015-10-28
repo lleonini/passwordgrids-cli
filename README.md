@@ -1,6 +1,6 @@
 # Overview
 
-PasswordGrid is a password generator that helps to generate
+PasswordGrids is a password generator that helps to generate
 [unique](http://xkcd.com/792/)
 high security
 passwords using grids.
@@ -47,7 +47,7 @@ Z5  LA  8U  ES    H3  YT  FE  US    25  3R  81  FL    1F  J4  0M  Z9
 
 This is the command line version. If you want a stand alone client-side
 javascript version, please check:
-[PasswordGrid JS](https://www.github.com/lleonini/passwordgrid-js)
+[PasswordGrids JS](http://passwordgrids.com)
 
 # Getting started
 
@@ -65,8 +65,8 @@ javascript version, please check:
 ## Install
 
 ```
-# cp target/scala-2.10/passwordgrid-cli-assembly-*.jar ~/passwordgrid.jar
-# alias pass='java -jar ~/passwordgrid.jar'
+# cp target/scala-2.10/passwordgrids-cli-assembly-*.jar ~/passwordgrids.jar
+# alias pass='java -jar ~/passwordgrids.jar'
 ```
 
 ## Usage
