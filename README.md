@@ -140,7 +140,7 @@ good solution.
 
 ### Master password
 
-You need the master password for each grids generation.
+You need the master password to generate each grid.
 
 Choose it wisely, not too short and remember it.
 

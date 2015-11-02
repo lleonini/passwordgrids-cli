@@ -23,11 +23,12 @@ object CLI {
     }
     
     val standardIn = System.console()
-    print("> identifier: ")
-    val identifier = standardIn.readPassword() mkString ""
     
     print("> master password: ")
     val salt = standardIn.readPassword() mkString ""
+    
+    print("> identifier: ")
+    val identifier = standardIn.readPassword() mkString ""
     
     val d = new GridsDisplay(salt, identifier, alphabet = alphabet)
     print(d)
