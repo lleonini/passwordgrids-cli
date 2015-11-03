@@ -1,0 +1,10 @@
+#!/bin/bash
+
+read_link_command="readlink"
+if ! type "$read_link_command" > /dev/null 2>&1; then
+  read_link_command="greadlink"
+fi
+
+base_dir=`dirname "$(${read_link_command} -f "$0")"`
+
+java -jar "${base_dir}/target/scala-2.10/passwordgrids.jar"

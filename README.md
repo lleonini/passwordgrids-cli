@@ -49,6 +49,8 @@ This is the command line version. If you want a stand alone client-side
 javascript version, please check:
 [PasswordGrids JS](http://passwordgrids.com)
 
+[Live version](http://passwordgrids.com)
+
 # Getting started
 
 ## Requirements
@@ -65,19 +67,19 @@ javascript version, please check:
 ## Install
 
 ```
-# cp target/scala-2.10/passwordgrids-cli-assembly-*.jar ~/passwordgrids.jar
-# alias pass='java -jar ~/passwordgrids.jar'
+# cp target/scala-2.10/passwordgrids.jar ~/passwordgrids.jar
+# alias grids='java -jar ~/passwordgrids.jar'
 ```
 
 ## Usage
 
 ```
-# pass
+# grids
 ```
 
 ### Example
 
-The identifier pattern is of the form:
+The identifier pattern could be of the form:
 
 ```
 [<user>@]domain
@@ -89,14 +91,16 @@ For websites/services where you will only have one account (or the default accou
 like facebook, linkedin, ...
 
 ```
-# pass
+# grids
+> master password: ****
 > identifier: facebook
 ```
 
 For a SSH server:
 
 ```
-# pass
+# grids
+> master password: ****
 > identifier: user@myserver.com
 
 ```
@@ -106,11 +110,13 @@ an incremental number as user part of the identifier:
 
 ```
 # pass
+> master password: ****
 > identifier: 1@bank
 ...
 
 
-# pass
+# grids
+> master password: ****
 > identifier: 2@bank
 ...
 ```
@@ -122,51 +128,56 @@ an incremental number as user part of the identifier:
 In order to be accepted in most places, the password should have the following
 characteristics:
 
-- total length of 10+ characters
+- length of 10+ characters
 - a mix between lowercase, uppercase, number and [special char](https://www.owasp.org/index.php/Password_special_characters)
 
 We propose to use a scheme like:
 
 ```
-<8+ characters from the grids><postfix>
+[<prefix>]<8+ characters from the grids>[<postfix>]
+
 ```
+### Prefix/postfix
 
-The postfix can be static or conditional. It can be used to add a lowercase or
-an uppercase or a number if the PG haven't generated one, and also,
-supply at least a special char.
+The prefix/postfix goal is to add some characters in order to match the ideal
+password composition described above. This is not a primary security element.
 
-A static postfix of 4 characters containing the full mix, like "Ye4!", can be a
-good solution.
+The default grid gives only numbers and uppercase letters. Sometimes, the grid
+will not give any numbers (7% with a 8 characters length pattern, not having any
+letters is so unlikely that you can skip this case).
+
+In this scenario, one should consider adding a special char, a lowercase letter
+and a number.
+
+A static 3 characters prefix/postfix like 'y0!', '@z3', ... is a good solution.
 
 ### Master password
 
-You need the master password to generate each grid.
+The master password is a fundamental security element. The same password
+will be used all the time and should be choosed wisely (not too short).
 
-Choose it wisely, not too short and remember it.
-
-If you input a wrong master password, the grids will just be different.
+If the wrong password is input, the grids will just be different.
 
 ### Pattern
 
-The pattern consists of picking a fixed amount of ordered chars in the grids.
+The pattern is a fundamental security element. It consists of picking a fixed
+amount of ordered chars in the grids.
 
-By default, 4x3 grids of 64 characters are generated (ideally all the grids
+12 grids of 64 characters are generated (ideally all the grids
 should fit on the screen without needing to scroll).
 
 We recommend a length of 8+ characters (~ 2800 billions possibilities) in order
 to make brute force attempts difficult.
 
-Once you have defined your pattern, you will reuse it all the time.
+Once defined, the pattern will be reused all the time.
 
-Someone observing you when you "extract" your password should not be able to
-guess your pattern.
-
-### Postfix
-
-The postfix makes your password longer (and stronger as long an attacker does
-not know it) and more compatible with specific password syntax exigences.
+To be secure, the pattern should not be obvious/linear, should pick elements in
+different grids and different positions.
 
 ## Security
+
+The security is achieved by using two fundamental security elements: the master password
+and the pattern (secondary elements are the prefix/postfix and the identifier).
 
 The grids are built with SHA-512 hashing:
 
@@ -176,14 +187,12 @@ SHA512(<master password>-<grid number>-<identifier>))
 
 Each byte of the hash is then mapped to the corresponding alphabet character.
 
-Why the system generates grids instead of directly giving a password ?
+The security of the system is compromised when *both* fundamental security
+elements are stolen. However, none of them are stored, and both are difficult to
+steal (even more the pattern because it doesn't rely on any input devices).
 
-There are two advantages with grids:
-
-- Even if your master password is compromised, an attacker will still have no
-		access to your passwords without knowing your pattern.
-- You can generate the grids in front of people and they will not be able to
-		read your password.
+Another advantage of the system is that you can generate your passwords in front
+of people without risks.
 
 ### Limitations
 

@@ -6,6 +6,8 @@ lazy val root = (project in file(".")).
 
 mainClass in Compile := Some("net.leonini.passwordgrids.CLI")
 
+assemblyJarName in assembly := "passwordgrids.jar"
+
 libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.3.0",
   "org.scalatest" % "scalatest_2.10" % "2.0" % "test",
