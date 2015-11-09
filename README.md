@@ -199,8 +199,8 @@ of people without risks.
 ![](http://imgs.xkcd.com/comics/security.png)
 
 If an attacker gets one of your grid and its corresponding identifier, he could
-have the ability to brute force the master password. Then the only protection
-remaining will be your pattern. That's why, even the identifier input is hidden.
+have the ability to brute force the master password. That's why, even the identifier
+input is hidden.
 
 If an attacker gets multiple of your generated passwords (2+) and also your
 master password, he could be able to determine the pattern and then generate
