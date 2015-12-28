@@ -171,8 +171,8 @@ to make brute force attempts difficult.
 
 Once defined, the pattern will be reused all the time.
 
-To be secure, the pattern should not be obvious/linear, should pick elements in
-different grids and different positions.
+To be more secure, the pattern should not be obvious/linear, should pick elements in
+different grids and at different positions.
 
 ## Security
 
@@ -182,17 +182,18 @@ and the pattern (secondary elements are the prefix/postfix and the identifier).
 The grids are built with SHA-512 hashing:
 
 ```
-SHA512(<master password>-<grid number>-<identifier>))
+Alphabet(SHA512(<master password>-<grid number>-<identifier>)))
 ```
 
 Each byte of the hash is then mapped to the corresponding alphabet character.
 
 The security of the system is compromised when *both* fundamental security
-elements are stolen. However, none of them are stored, and both are difficult to
+elements are stolen (or one of them + a generated password).
+However, none of them are stored, and both should be difficult to
 steal (even more the pattern because it doesn't rely on any input devices).
 
-Another advantage of the system is that you can generate your passwords in front
-of people without risks.
+A major advantage of the system is that you can generate your passwords in front
+of people without showing them.
 
 ### Limitations
 
@@ -200,9 +201,9 @@ of people without risks.
 
 If an attacker gets one of your grid and its corresponding identifier, he could
 have the ability to brute force the master password. That's why, even the identifier
-input is hidden.
+input is hidden and it's better to "close" the grid once used.
 
-If an attacker gets multiple of your generated passwords (2+) and also your
+If an attacker gets one of your generated password and also your
 master password, he could be able to determine the pattern and then generate
 passwords for all your accounts.
 
